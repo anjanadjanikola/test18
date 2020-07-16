@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        
+        #p1 ,#p2 ,#p3 ,#p4 ,#p5
+        {
+            border: 1px solid blue;
+            margin-left: 100px;
+            text-align: left;
+                
+        }
+        #container 
+        {
+            margin-right: 67%;
+
+        }
+        
+
+    </style>
+
+</head>
+<body>
+    <div id="container">
+        <p id="p1"></p>
+        <p id="p2"></p>
+        <p id="p3"></p>
+        <p id="p4"></p>
+        <p id="p5"></p>
+    </div>    
+        
+    
+    <script>
+        var textArea1 = document.getElementById("p1")
+        var textArea2 = document.getElementById("p2")
+        var textArea3 = document.getElementById("p3")
+        var textArea4 = document.getElementById("p4")
+        var textArea5 = document.getElementById("p5")
+        
+    function Student(name,address,phone,course){
+            this.name = name;
+            this.address = address;
+            this.phone = phone;
+            this.course = course;
+
+        this.getInfo = function(){
+            return "Name: " + this.name + "</br>" +
+                    " Address:  " + this.address + "</br>" +
+                    " Phone:  " + this.phone  + "</br>" +
+                    " Course:  " + this.course + ""
+        }
+    }
+
+    function Server(){
+        fetch("https://v-dresevic.github.io/Advanced-JavaScript-Programming/data/students.txt").
+            then(function(response) { return response.text() }).
+            then(function(data){
+            data = data.split("\n")
+             {
+            studenti1 = new Student(data[0],data[1],data[2],data[3]);
+            studenti2 = new Student(data[4],data[5],data[6],data[7]);
+            studenti3 = new Student(data[8],data[9],data[10],data[11]);
+            studenti4 = new Student(data[12],data[13],data[14],data[15]);
+            studenti5 = new Student(data[16],data[17],data[18],data[19]);
+            
+
+           textArea1.innerHTML+=studenti1.getInfo()
+           textArea2.innerHTML+=studenti2.getInfo()
+           textArea3.innerHTML+=studenti3.getInfo()
+           textArea4.innerHTML+=studenti4.getInfo()
+           textArea5.innerHTML+=studenti5.getInfo()
+        }   
+            });
+    }
+    
+    async function getSudent(){
+        let studenti;
+        studenti = await Server();
+            return studenti ;
+    }
+    
+      getSudent();
+</script>
+    
+</body>
+</html>
